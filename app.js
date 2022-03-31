@@ -132,9 +132,12 @@ const showMessage = (message) => {
 }
 
 const flipTile = () => {
-  const rowTiles = document.querySelector("guessRow-" + currentRow).childNodes;
+  const rowTiles = document.querySelector("#guessRow-" + currentRow).childNodes;
   rowTiles.forEach((tile, index) => {
     const dataLetter = tile.getAttribute('data');
+
+    setTimeout(() => {
+      tile.classList.add('flip')
     if (dataLetter === wordle[index]){
       tile.classList.add('green-overlay');
     } else if (wordle.includes(dataLetter)){
@@ -142,5 +145,6 @@ const flipTile = () => {
     } else {
       tile.classList.add('grey-overlay')
     }
+    }, 300 * index)
   })
 }
